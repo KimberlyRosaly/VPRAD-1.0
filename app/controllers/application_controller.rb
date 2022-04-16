@@ -8,6 +8,8 @@ class ApplicationController < Sinatra::Base
     #enable Sinatra Sessions - for UserPassword goodness
     enable :sessions
     set :session_secret, "stringOfTeXt"
+    #enable Flash Messages
+    register Sinatra::Flash 
   end
 
   helpers do

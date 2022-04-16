@@ -1,0 +1,34 @@
+<% @grouping = "" %>
+
+<% @permits.each do |permit| %> 
+
+    <% @apartment = Apartment.find_by(id: permit.apartment_id) %>
+    
+                    <% if @apartment %> <%# THIS METHOD IS FOR BROKEN RECORDS FIX%> 
+    <% if @grouping != @apartment.building%>
+        <h3><%= "- - - - - -  - - - - -  - -  - " + @apartment.building.to_s %></h3>
+    <% end %>
+    <% @grouping = @apartment.building %>
+
+    <%= "#{@apartment.building}" + " - " %>
+    <strong><%= "#{@apartment.unit}" %></strong>
+    <%= " \u2022" %>
+                    <% end %>
+
+    <%= "PLATE#: #{permit.vehicle_plate}" + " \u2022" %>
+                
+    <%= "PERMIT#: #{permit.number}" + " \u2022" %>
+
+    <%= "#{permit.vehicle_year}" %>
+
+    <%= "#{permit.vehicle_color}"%>
+
+    <%= "#{permit.vehicle_make_model}" + " \u2022" %>
+
+    <%= "#{permit.tenant_name}" %>     
+
+    <%= " \u2022" + " #{permit.contact_number}" %>
+
+    <br>
+
+<% end %>

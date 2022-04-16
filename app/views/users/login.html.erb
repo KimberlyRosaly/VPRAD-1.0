@@ -1,26 +1,50 @@
-
-
 <center>
 
+<div class="intro"><h1>LOG IN</h1></div>
 
-<div class="what">
-<h2>LOG IN</h2>
-    <form method ="POST" action="/login">
-    u s e r n a m e : <br>
-    <input type="text" name="username"><br>
-    p a s s w o r d : <br>
-    <input type="text" name="password"><br><br>
+Username : 
+<br>
+<form method="POST" action="/login">
+<input type="text" name="username" value="SUPERINTENDENT" class="login_textbox_button" required>
+<br>
+<br>
+Password :
+<br>
+↓
+<br>
+<input type="text" name="password" class="login_textbox_button" required>
+<br>
 
-        <input type="submit"class="mybutton">
-    </form>
+    <% if flash[:message]%>
+        <div class="flashy">
+                <%= "#{flash[:message]}" %>
+        </div>
+    <% end %>
+
+<br>
+<input type="submit" value="SUBMIT" class="mybutton">
+
+</form>
+
+
+<%# <div class="what"> %>
+<%# <h2>LOG IN</h2> %>
+    <%# <form method ="POST" action="/login"> %>
+    <%# u s e r n a m e : <br> %>
+    <%# <input type="text" name="username"><br> %>
+    <%# p a s s w o r d : <br> %>
+    <%# <input type="text" name="password"><br><br> %>
+
+        <%# <input type="submit"class="mybutton"> %>
+    <%# </form> %>
 
 
 
 
-<h2>- - - - - - - - - - - - - - - - - - - </h2>
+<%# <h2>- - - - - - - - - - - - - - - - - - - </h2> %>
 
-<h2>SIGN UP</h2>
-<h2>↓</h2>
- <a href="/signup">create NEW user</a>
+<%# <h2>SIGN UP</h2> %>
+<%# <h2>↓</h2> %>
+ <%# <a href="/signup">create NEW user</a> %>
+<%# </div> %>
  </center>   
-</div>

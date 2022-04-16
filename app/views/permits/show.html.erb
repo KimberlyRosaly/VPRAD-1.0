@@ -1,10 +1,10 @@
 <center>
-<div class="what">
+<div class="apartment_show_header">
     <h2> [ P E R M I T ]<br>
          [ #<%=@permit.number%> ] </h2>
 </div>
 </center>
-
+<br>
 
     <div class="permit-container">
 
@@ -29,19 +29,19 @@ UNIT:
 <div class="second">
 
     <div class="second-a">
-    <h3> TENANT : </h3>
-    Name : <%= "#{@permit.tenant_name}" %><br>
-    Contact : <%= "#{@permit.contact_number}" %><br>
+    <h2>TENANT</h2>
+    <strong>Name : </strong><u><%= "#{@permit.tenant_name}" %></u><br>
+    <strong>Contact : </strong><u><%= "#{@permit.contact_number}" %></u><br>
     </div>
 
 
     <div class="second-b">
-    <h3> VEHICLE : </h3>
-    PERMIT #: <%= "#{@permit.number}" %><br>
-    License Plate : <%= "#{@permit.vehicle_plate}" %><br>
-    Color : <%= "#{@permit.vehicle_color}" %><br>
-    Year : <%= "#{@permit.vehicle_year}" %><br>
-    Make & Model : <%= "#{@permit.vehicle_make_model}" %><br>
+    <h2>VEHICLE</h2>
+    <strong>Permit #: </strong><u><%= "#{@permit.number}" %></u><br>
+    <strong>License Plate : </strong><u><%= "#{@permit.vehicle_plate}" %></u><br>
+    <strong>Color : </strong><u><%= "#{@permit.vehicle_color}" %></u><br>
+    <strong>Year : </strong><u><%= "#{@permit.vehicle_year}" %></u><br>
+    <strong>Make & Model : </strong><u><%= "#{@permit.vehicle_make_model}" %></u><br>
     </div>
 
 
@@ -49,15 +49,24 @@ UNIT:
 </div>
 
 
+
     <%# permit-container %>
     </div>
+    <br>
+
+
+
+
+<center>
+<a href="/apartments/<%= @permit.apartment_id %>"><button class="view_apartment_button">VIEW APARTMENT</button></a>
+</center>
 
 
 
 <br>
-<a href="/permits/<%= @permit.id %>/edit"><button class="mybutton">E D I T</button></a>
+<a href="/permits/<%= @permit.id %>/edit"><button class="mybutton">E D I T PERMIT</button></a>
 <br><br>
 <form action="/permits/<%= @permit.id %>/delete" method="post">
             <input type="hidden" name="_method" value="delete">
-            <input type="submit" value="d e l e t e" class="mydeletebutton">
+            <input type="submit" value="D E S T R O Y PERMIT" class="mydeletebutton">
 </form>

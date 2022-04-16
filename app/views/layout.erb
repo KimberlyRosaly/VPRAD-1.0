@@ -1,23 +1,30 @@
 <!doctype html>
 <html>
     <head>
+
+      <%# TO USE FONTAWESOME ICONS %>
+      <script src="https://kit.fontawesome.com/74c7444b36.js" crossorigin="anonymous"></script>
+
         <style>
 
             body {
+                font-family: Cambria;
                 /* background-image: url("https://freefrontend.com/assets/img/css-background-patterns/blueprint-pattern-css3.png"); */ */
                 background-color: #D6EAF8;
                 }
+
          
-            .hedges_header {
+            .complex_header {
                 background-color: #73C6B6;
-                text-shadow: 2px 2px 8px #000000;                
-                color: #EAFAF1;
+                text-shadow: 2px 2px 5px #000000;
+                          
+                color: #FFFFFF;
                 height: 50px;
                 text-align: center;
                 text-decoration: overline;
             }
 
-            .hedges_header_addresses {
+            .complex_header_addresses {
                 
                 background-color: #73C6B6;
                 text-shadow: 2px 2px 5px #000000;    
@@ -26,9 +33,17 @@
                 text-align: center;
             }
 
-            /* .my_code {
-                text-align: center;
-            } */
+            
+
+            .my_navigation {
+                float: right;
+                border: 1px solid black;
+                background: #73C6B6;
+                padding: 4px 12px;
+                border-radius: 4px 0 0 4px;
+                box-shadow: 2px 2px 2px black; 
+                color: white;
+            }
 
             .my_footer {
                 text-align: center;
@@ -37,32 +52,50 @@
                 letter-spacing: 4px;
             }
 
+            .login_textbox_button{
+                /* background-color: green; */
+                font-size: 20px;
+                text-align: center;
+                font-weight: bold;
+                box-sizing: border-box;
+                border: 3px solid #43a390;
+                padding-top: 8px;
+                padding-bottom: 8px;                
+            }
+
+            .flashy{
+                color: red;
+            }
+
             .intro {
             
                 text-align: center;
-                color: #EAFAF1;
+                color: #FFFFFF;
                 text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
                 border-left-style: solid;
                 border-right-style: solid;
                 /* border: 3px solid #43a390; */
-                background-color: #b7e1d9;
+                background-color: #73C6B6;
                 letter-spacing: 4px;
             }
 
             .heading {
             
                 text-align: center;
-                color: #EAFAF1;
+                color: #FFFFFF;
                 text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
                 border-left-style: solid;
                 border-right-style: solid;
                 /* border: 3px solid #43a390; */
-                background-color: #b7e1d9;
+                background-color: #73C6B6;
                 letter-spacing: 4px;
             }
 
-            .mybutton {       
-               color: #000;
+
+            .mybutton {
+                font-size: 14px;
+                font-family: Cambria;   
+                color: #000;
                 background-color: #fff;
                 box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); 
             }
@@ -73,6 +106,8 @@
                 color: #fff;
             }
             .mydeletebutton {
+                font-size: 14px;
+                font-family: Cambria;
                 color: #000;
                 background-color: #fff;
                 box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
@@ -82,6 +117,8 @@
                 box-shadow: 0px 8px 5px rgba(183, 225, 217, 0.4);
                 color: #fff;
             }
+
+
             .flex-container {
                 display: flex;
                 flex-flow: row wrap;
@@ -132,6 +169,29 @@
                         flex: 1;
                     }
 
+            .view_apartment_button{
+                /* background-color: green; */
+                font-family: Cambria;
+                font-size: 20px;
+                text-align: center;
+                font-weight: bold;
+                box-sizing: border-box;
+                border: 3px solid #43a390;
+                padding-top: 8px;
+                padding-bottom: 8px;
+                padding-left: 30px;
+                padding-right: 30px;          
+            }
+
+            .apartment_show_header{
+                font-size: 15px;
+                text-align: center;
+                font-weight: bold;
+                box-sizing: border-box;
+                border: 3px solid #43a390;
+                text-shadow: 1px 1px 2px #000000;
+            }
+
 
 
 
@@ -156,25 +216,31 @@
             }
 
 
-
-
-
-
-             
+            /* permit index page */
+            .block-button{
+                font-family: Cambria;
+                display: block;
+                width: 100%;
+                text-align: left;
+                padding: 2px;
+                border-color: #73C6B6;
+                background-color: white;
+            }            
 
             
         </style>
     </head>
+
     <body>
           
-        <div class="hedges_header"> 
-            <h1>THE HEDGES</h1>
+        <div class="complex_header"> 
+            <h1>The Far Scape Apartments</h1>
         </div>
 
-        <div class="hedges_header_addresses">
-            401, 403, 405, 407, 409 East Main Street<br>
-            5, 9 Brentwood Road<br>
-            Bay Shore, New York 11706<br>
+        <div class="complex_header_addresses">
+            33A, 33B North Main Street<br>
+            404A, 404B, 555 South Main Street<br>
+            Mulberry, New York 99077<br>
             <br>   
         </div>
 
@@ -187,6 +253,12 @@
         <%# yield -> INJECT THE REST OF my CODED erbPAGE HERE %>
               <%= yield %> 
         <%# </div> %>
+
+            <% if request.path_info != "/" && request.path_info != "/login" && request.path_info != "/signup" %>
+        <div class="my_navigation">
+                <a href="/" style="text-decoration: none;"><i class="fas fa-grip-vertical"></i>DIRECTORY</a>
+        </div>
+            <% end %>
 
         <div class="my_footer">
             <% @user = current_user %> 

@@ -66,18 +66,40 @@ class UsersController < ApplicationController
   end
 
   post '/login' do #<----from USER LOG IN
-      if @user = User.find_by(username: params[:username])
-        if @user.authenticate(params[:password]) #<---true = correct password
-          session[:user_id] = @user.id #?Yup...this is the act of "logging in"
-          redirect to '/'
-        else
-          redirect to "/login"
-          #error handling - if password doesn't match user.password
-        end
-      else
-        redirect to "/login"
-        #error handling - if user isn't found    
-      end
+    #if USERNAME TEXT BOX has not changed from my default value set input
+    #set the USERNAME to what is in the actual database
+    if params[:username] == "SUPERINTENDENT"
+      params[:username] = "superintendent"  
+    end
+
+    @user = User.find_by(username: params[:username])
+
+    if @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect to '/'
+    else
+      flash[:message] = "incorrect username and/or password - please, try again"
+      redirect to "/login"
+    end
+
+
+
+
+
+
+
+      # if @user = User.find_by(username: params[:username])
+      #   if @user.authenticate(params[:password]) #<---true = correct password
+      #     session[:user_id] = @user.id #?Yup...this is the act of "logging in"
+      #     redirect to '/'
+      #   else
+      #     redirect to "/login"
+      #     #error handling - if password doesn't match user.password
+      #   end
+      # else
+      #   redirect to "/login"
+      #   #error handling - if user isn't found    
+      # end
   end
 
   get '/logout' do

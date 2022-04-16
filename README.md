@@ -15,12 +15,7 @@ Create records of tenants and their associated vehicles with a given permit regi
 c o n t r i b u t o r s   g u i d e
 To be completely honest, this project is not for the public as this is my personal project intended for my own private usage. Feedback from caring and respectful individuals is welcome.
 
-l i n k   t o   t h e   l i c e n s e
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-LINK NEEDED - - -- - - - #! I don't think I have a license..
-
 i n s t a l l   i n s t r u c t i o n s
-Until I find a better way to make this work..
 in terminal:
     run 'bundle install' 
     run 'shotgun'

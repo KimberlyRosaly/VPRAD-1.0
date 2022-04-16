@@ -6,6 +6,21 @@ class PermitsController < ApplicationController
     erb :"/permits/index.html"
   end
 
+  get "/printer_friendly_index" do
+    @permits = Permit.order(number: :asc)
+    erb :"/permits/printer_friendly_index.html", :layout => :empty_layout
+  end
+
+  get "/printer_friendly_index_plate" do
+    @permits = Permit.order(vehicle_plate: :asc)
+    erb :"/permits/printer_friendly_index_plate.html", :layout => :empty_layout
+  end
+
+  get "/permits_by_plate" do
+    @permits = Permit.order(vehicle_plate: :asc)
+    erb :"/permits/index_plate.html"
+  end
+
   # GET: /permits/new
   get "/permits/new" do
     erb :"/permits/new.html"
@@ -29,11 +44,21 @@ class PermitsController < ApplicationController
   post "/permits" do
     @apartment = Apartment.find_or_create_by(building: params[:building].upcase, unit: params[:unit].upcase, number: params[:building].upcase + params[:unit].upcase)
     @permit = Permit.create(apartment_id: @apartment.id)
-    params.except(:building, :unit).each do |key, value|
-      @permit.send("#{key}=", value)
+
+    
+    params.except(:building, :unit, :contact_number).each do |key, value|
+      @permit.send("#{key}=", value.upcase)
+
+        if params[:contact_number].length == 10
+          params[:contact_number].insert(0,"(").insert(4, ")").insert(8,"-")
+        else
+          @permit.contact_number = params[:contact_number]
+        end
+
     end
+
     @permit.save
-    redirect "/permits"
+    redirect "/apartments/#{@apartment.id}"
   end
 
   # GET: /permits/5
@@ -60,12 +85,12 @@ class PermitsController < ApplicationController
     @permit.update(
       apartment_id: @apartment.id, 
       number: params[:number], 
-      tenant_name: params[:tenant_name], 
+      tenant_name: params[:tenant_name].upcase, 
       contact_number: params[:contact_number], 
-      vehicle_plate: params[:vehicle_plate], 
-      vehicle_color: params[:vehicle_color], 
+      vehicle_plate: params[:vehicle_plate].upcase, 
+      vehicle_color: params[:vehicle_color].upcase, 
       vehicle_year: params[:vehicle_year], 
-      vehicle_make_model: params[:vehicle_make_model] 
+      vehicle_make_model: params[:vehicle_make_model].upcase 
     )
     redirect "/permits/#{@permit.id}"
   end

@@ -1,0 +1,24 @@
+
+
+<% @permits.each do |permit| %>
+
+            
+
+                <strong><%= "PLATE#: #{permit.vehicle_plate}" + " \u2022" %></strong>
+                
+                <%= "PERMIT#: #{permit.number}" + " \u2022" %>
+
+                <%= "#{permit.vehicle_year}" %>
+
+                <%= "#{permit.vehicle_color}"%>
+
+                <%= "#{permit.vehicle_make_model}" + " \u2022" %>
+
+                <% @apartment = Apartment.find_by(id: permit.apartment_id) %>
+                    <% if @apartment %> <%# THIS METHOD IS FOR BROKEN RECORDS FIX%>
+                <%= "#{@apartment.building}-#{@apartment.unit}" + " \u2022" %>
+                    <% end %>
+
+                <%= "#{permit.tenant_name}" %> 
+                <br>
+<% end %>

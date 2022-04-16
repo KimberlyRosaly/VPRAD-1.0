@@ -9,4 +9,8 @@ ActiveRecord::Base.establish_connection(
 )
 
 require './app/controllers/application_controller'
+
+#trying to make the database export correctly
+# require '../../../Users/01010/Desktop/d_data.csv'
+
 require_all 'app'

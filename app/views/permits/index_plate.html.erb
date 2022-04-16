@@ -1,0 +1,47 @@
+<div class="heading">
+    <h2>[PERMIT INDEX]</h2>
+    <h3>(<%=Permit.all.count%>) REGISTRATIONS </h3> 
+</div>
+
+<a href="/permits/new" style="float: right;"><button class="mybutton">CreatePermit</button></a>
+<a href="/printer_friendly_index_plate" style="float: left;"><button class="mybutton">PRINTER FRIENDLY PAGE</button></a>
+<br>
+<br>
+
+
+
+
+
+<% @permits.each do |permit| %>
+        
+<div>
+    <div style="padding: 2px;">
+
+            <a href="/permits/<%= permit.id %>"><button class="block-button">
+
+                <strong><%= "PLATE#: #{permit.vehicle_plate}" + " \u2022" %></strong>
+                
+                <%= "PERMIT#: #{permit.number}" + " \u2022" %>
+
+                <%= "#{permit.vehicle_year}" %>
+
+                <%= "#{permit.vehicle_color}"%>
+
+                <%= "#{permit.vehicle_make_model}" + " \u2022" %>
+
+                <% @apartment = Apartment.find_by(id: permit.apartment_id) %>
+                    <% if @apartment %> <%# THIS METHOD IS FOR BROKEN RECORDS FIX%>
+                <%= "#{@apartment.building}-#{@apartment.unit}" + " \u2022" %>
+                    <% end %>
+
+                <%= "#{permit.tenant_name}" %> 
+
+
+            </button></a>
+
+    </div>
+
+<% end %>
+
+</div>
+

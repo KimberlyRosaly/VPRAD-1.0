@@ -1,43 +1,50 @@
-<div class="heading">
+<div class="apartment_show_header"> 
 <h1>[<%=@apartment.building%>-<%=@apartment.unit%>]
     <br>[PERMIT# <%=@permit.number%>]</h1>
 </div>
-
-<form action="/permits/<%= @permit.id %>" method="post">
-    <input type="hidden" value="patch" name="_method">
-
-        building : 
-        <input type="text" name="building" value="<%=@apartment.building%>"><br>
-        unit : 
-        <input type="text" name="unit" value="<%=@apartment.unit%>"><br>
-        ------------------------------------------------------------
-        <br>
-        permit # : 
-        <input type="text" name="number" value="<%=@permit.number%>"><br>
-        tenant name :
-        <input type="text" name="tenant_name" value="<%=@permit.tenant_name%>"><br>
-        contact number : 
-        <input type="text" name="contact_number" value="<%=@permit.contact_number%>"><br>
-        ------------------------------------------------------------
-        <br>
-        license plate : 
-        <input type="text" name="vehicle_plate" value="<%=@permit.vehicle_plate%>"><br>
-        color : 
-        <input type="text" name="vehicle_color" value="<%=@permit.vehicle_color%>"><br>
-        year : 
-        <input type="text" name="vehicle_year" value="<%=@permit.vehicle_year%>"><br>
-        make & model : 
-        <input type="text" name="vehicle_make_model" value="<%=@permit.vehicle_make_model%>"><br>
-
+<br>
 
     <center>
+<form action="/permits/<%= @permit.id %>" method="post" class="what">
+    <input type="hidden" value="patch" name="_method">
 
-    <br>
+<div class="flex-container">
+    <div>
+        <h2>BUILDING :</h2>
+        <input type="text" name="building" value="<%=@apartment.building%>"><br>
+        <h2>UNIT :</h2>
+        <input type="text" name="unit" value="<%=@apartment.unit%>"><br>
+    </div>
+        
+    <div>
+        <h2>TENANT</h2>        
+        permit # : <br>
+        <input type="text" name="number" value="<%=@permit.number%>"><br>
+        tenant name :<br>
+        <input type="text" name="tenant_name" value="<%=@permit.tenant_name%>"><br>
+        contact number : <br>
+        <input type="text" name="contact_number" value="<%=@permit.contact_number%>"><br>
+    </div>
+        
+    <div>
+        <h2>VEHICLE</h2>    
+        license plate : <br>
+        <input type="text" name="vehicle_plate" value="<%=@permit.vehicle_plate%>"><br>
+        color : <br>
+        <input type="text" name="vehicle_color" value="<%=@permit.vehicle_color%>"><br>
+        year : <br>
+        <input type="text" name="vehicle_year" value="<%=@permit.vehicle_year%>"><br>
+        make & model : <br>
+        <input type="text" name="vehicle_make_model" value="<%=@permit.vehicle_make_model%>"><br><br>
+    </div>
+
+</div>
+    
     <input type="submit" value="s u b m i t changes" class="mybutton">
 </form>
-
+<br>
 <form action="/permits/<%= @permit.id %>/delete" method="post">
         <input type="hidden" value="delete" name="_method" >
-        <input type="submit" value="d e l e t e" class="mydeletebutton">
+        <input type="submit" value="DESTROY RECORD" class="mydeletebutton">
 </form>
     </center>

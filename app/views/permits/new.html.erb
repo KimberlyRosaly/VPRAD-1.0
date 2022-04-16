@@ -6,39 +6,40 @@
 
 <form method="POST" action="/permits" class="what">
 
-<div style="float: left;">
-    b u i l d i n g : <br>
-    <input type="text" name="building"><br>
-    u n i t : <br>
-    <input type="text" name="unit">
-</div>
+<div class="flex-container">
+    <div>
+    <h2>BUILDING :</h2>
+    <input type="text" name="building" required>
+    <h2>UNIT :</h2>
+    <input type="text" name="unit" required>
+    </div>
+
+    <div>
+    <h2>TENANT</h2>
     
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-
     permit # : <br>
-    <input type="text" name="number"><br>
+    <input type="text" name="number" required><br>
     tenant name : <br>
-    <input type="text" name="tenant_name"><br>
+    <input type="text" name="tenant_name" required><br>
     contact # : <br>
-    <input type="text" name="contact_number"><br>
+    <input type="text" name="contact_number" required minlength="10" maxlength="10"><br>
+    </div>
 
-    <br>
-    <br>
 
-    vehicle license plate # : <br>
-    <input type="text" name="vehicle_plate"><br>
-    vehicle color : <br>
-    <input type="text" name="vehicle_color"><br>
-    vehicle year : <br>
-    <input type="text" name="vehicle_year"><br>
-    vehicle make & model : <br>
-    <input type="text" name="vehicle_make_model"><br><br>
+    <div>
+    <h2>VEHICLE</h2>
+    
+    license plate # : <br>
+    <input type="text" name="vehicle_plate" required><br>
+    year : <br>
+    <input type="text" name="vehicle_year" required><br>
+    color : <br>
+    <input type="text" name="vehicle_color" required><br>
+    make & model : <br>
+    <input type="text" name="vehicle_make_model" required><br><br>
+    </div>
 
+</div>
 
 
     <input type="submit" value="c r e a t e" class="mybutton">

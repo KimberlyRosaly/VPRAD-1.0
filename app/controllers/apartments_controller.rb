@@ -6,6 +6,12 @@ class ApartmentsController < ApplicationController
     erb :"/apartments/index.html"
   end
 
+  get "/printer_friendly_index_apartment" do
+    # @apartments = Apartment.order(number: :asc)
+    @permits = Permit.joins(:apartment).merge(Apartment.order(number: :asc))
+    erb :"/apartments/printer_friendly_index_apartment.html", :layout => :empty_layout
+  end
+
   # GET: /apartments/new
   get "/apartments/new" do
     erb :"/apartments/new.html"

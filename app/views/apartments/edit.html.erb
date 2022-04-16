@@ -1,17 +1,28 @@
-<center><h1>[<%=@apartment.number%>]</h1></center>
+<div class="apartment_show_header">
+<center><h1>
+[APARTMENT]
+<br>
+[<%=@apartment.building%>-<%=@apartment.unit%>]
+</h1></center>
+</div>
+<br>
 
+<center>
 <form action="/apartments/<%= @apartment.id %>" method="post">
     <input type="hidden" value="patch" name="_method">
 
         building : 
-        <input type="text" name="building" value="<%=@apartment.building%>"><br>
+        <br><input type="text" name="building" value="<%=@apartment.building%>"><br>
         unit : 
-        <input type="text" name="unit" value="<%=@apartment.unit%>">
+        <br><input type="text" name="unit" value="<%=@apartment.unit%>">
+    <br>
     <br>
     <input type="submit" value="s u b m i t changes" class="mybutton">
 </form>
+<br>
 
 <form action="/apartments/<%= @apartment.id %>/delete" method="post">
         <input type="hidden" value="delete" name="_method" >
-        <input type="submit" value="d e l e t e" class="mydeletebutton">
+        <input type="submit" value="D E S T R O Y RECORD" class="mydeletebutton">
 </form>
+</center>

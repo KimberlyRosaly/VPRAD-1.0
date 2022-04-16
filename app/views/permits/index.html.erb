@@ -4,24 +4,24 @@
 </div>
 
 <a href="/permits/new" style="float: right;"><button class="mybutton">CreatePermit</button></a>
-
+<a href="/printer_friendly_index" style="float: left;"><button class="mybutton">PRINTER FRIENDLY PAGE</button></a>
 <br>
 <br>
 
 
 
 
-<div class="">
 
 <% @permits.each do |permit| %>
         
-<div>
+<div class="">
+<div style="padding:2px;">
 
-        <a href="/permits/<%= permit.id %>"><button>
+        <a href="/permits/<%= permit.id %>"><button class="block-button">
 
-            <%= "PERMIT#:#{permit.number}" + " \u2022" %>
+            <strong><%= "PERMIT#: #{permit.number}" + " \u2022" %></strong>
             
-            <%= "PLATE#:#{permit.vehicle_plate}" + " \u2022" %>
+            <%= "PLATE#: #{permit.vehicle_plate}" + " \u2022" %>
 
             <%= "#{permit.vehicle_year}" %>
 
@@ -29,8 +29,10 @@
 
             <%= "#{permit.vehicle_make_model}" + " \u2022" %>
 
-            <% @apartment = Apartment.find(permit.apartment_id) %>
+            <% @apartment = Apartment.find_by(id: permit.apartment_id) %>
+                <% if @apartment %> <%# THIS METHOD IS FOR BROKEN RECORDS FIX%>
             <%= "#{@apartment.building}-#{@apartment.unit}" + " \u2022" %>
+                <% end %>
 
             <%= "#{permit.tenant_name}" %> 
 
@@ -39,7 +41,7 @@
 
 </div>
 
-
 <% end %>
 
 </div>
+
